@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9F69F0C11863078800B60B1B /* rect.vbo in Resources */ = {isa = PBXBuildFile; fileRef = 9F69F0C01863078800B60B1B /* rect.vbo */; };
+		9F69F0C41863108200B60B1B /* fbf.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9F69F0C21863108200B60B1B /* fbf.fsh */; };
+		9F69F0C51863108200B60B1B /* fbf.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 9F69F0C31863108200B60B1B /* fbf.vsh */; };
 		9F6BBF7B1862561D004DE4CC /* es2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9F6BBF7218625343004DE4CC /* es2.fsh */; };
 		9F6BBF7C1862561D004DE4CC /* es2.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 9F6BBF7318625343004DE4CC /* es2.vsh */; };
 		9F9CD6611862333500D8B243 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9CD6601862333500D8B243 /* Foundation.framework */; };
@@ -42,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		9F69F0C01863078800B60B1B /* rect.vbo */ = {isa = PBXFileReference; lastKnownFileType = file; path = rect.vbo; sourceTree = "<group>"; };
+		9F69F0C21863108200B60B1B /* fbf.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = fbf.fsh; sourceTree = "<group>"; };
+		9F69F0C31863108200B60B1B /* fbf.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = fbf.vsh; sourceTree = "<group>"; };
 		9F6BBF7218625343004DE4CC /* es2.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = es2.fsh; sourceTree = "<group>"; };
 		9F6BBF7318625343004DE4CC /* es2.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = es2.vsh; sourceTree = "<group>"; };
 		9F9CD65D1862333500D8B243 /* ES3 Framebuffer Fetch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ES3 Framebuffer Fetch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +133,8 @@
 		9F6BBF7118625343004DE4CC /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				9F69F0C21863108200B60B1B /* fbf.fsh */,
+				9F69F0C31863108200B60B1B /* fbf.vsh */,
 				9F6BBF7218625343004DE4CC /* es2.fsh */,
 				9F6BBF7318625343004DE4CC /* es2.vsh */,
 			);
@@ -315,6 +321,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F69F0C41863108200B60B1B /* fbf.fsh in Resources */,
+				9F69F0C51863108200B60B1B /* fbf.vsh in Resources */,
 				9F6BBF7B1862561D004DE4CC /* es2.fsh in Resources */,
 				9F6BBF7C1862561D004DE4CC /* es2.vsh in Resources */,
 				9F9CD6781862333500D8B243 /* Main.storyboard in Resources */,

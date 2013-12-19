@@ -49,10 +49,13 @@ struct Quad {
   IBOutlet UILabel *tris_per_sec_;
   IBOutlet UISlider *complexity_;
   IBOutlet UISegmentedControl *technique_;
-  GLProgram *es2_program_;
   VBOModel *rect_;
+  GLProgram *es2_program_;
   int es2_uni_mvp_;
   int es2_uni_color_;
+  GLProgram *fbf_program_;
+  int fbf_uni_mvp_;
+  int fbf_uni_color_;
   std::list<double> frame_times_;
   std::list<double> pixels_drawn_;
   int num_objects_last_draw_;
@@ -120,12 +123,17 @@ struct Quad {
   es2_program_->Link();
   es2_uni_mvp_ = es2_program_->GetUniformLocation("uni_mvp");
   es2_uni_color_ = es2_program_->GetUniformLocation("uni_color");
+  fbf_program_ = GLProgram::FromText(StringFromFile("fbf", "vsh").UTF8String, StringFromFile("fbf", "fsh").UTF8String);
+  fbf_program_->Link();
+  fbf_uni_mvp_ = fbf_program_->GetUniformLocation("uni_mvp");
+  fbf_uni_color_ = fbf_program_->GetUniformLocation("uni_color");
   rect_ = VBOModel::Load("rect");
 }
 
 - (void)tearDownGL {
   [EAGLContext setCurrentContext:self.context];
   SAFE_DELETE(es2_program_);
+  SAFE_DELETE(fbf_program_);
   SAFE_DELETE(rect_);
 }
 
@@ -209,6 +217,20 @@ const int kMaxComplexity = 1000;
       num_pixels_drawn_ += q.w/2.0f * w * q.h/2.0f * h;
     }
     glDisable(GL_BLEND);
+  } else {
+    fbf_program_->Use();
+    auto qit = quads_.begin();
+    while (qit != quads_.end()) {
+      Quad & q = *qit++;
+      Transform t;
+      t.glTranslate(q.x, q.y, 0.0f);
+      t.glScale(q.w, q.h, 1.0f);
+      glUniformMatrix4fv(fbf_uni_mvp_, 1, 0, t.raw());
+      glUniform4f(fbf_uni_color_, q.r, q.g, q.b, q.a);
+      rect_->Draw();
+      // Compute area
+      num_pixels_drawn_ += q.w/2.0f * w * q.h/2.0f * h;
+    }
   }
 }
 
